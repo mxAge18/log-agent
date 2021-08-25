@@ -11,7 +11,7 @@ import (
 	"gopkg.in/Shopify/sarama.v1"
 )
 var(
-	Config config.Config = config.LoadConfig()
+	Config config.Config = config.LoadConfig("./config/config.ini")
 	KafkaService service.KafkaService = service.NewKafkaService(
 		[]string{Config.GetKafkaAddr()}, 
 		sarama.NewConfig(), 
@@ -42,9 +42,6 @@ func run() {
 }
 
 func main() {
-	// 加载配置
-
 	// 运行服务
-	// run()
-	LogController.PutDataToEtcd()
+	run()
 }

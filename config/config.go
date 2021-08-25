@@ -1,8 +1,11 @@
 package config
 
 import (
+	"fmt"
 	"log"
+	"log-agent/utils"
 	"time"
+
 	"gopkg.in/ini.v1"
 )
 type Config interface {
@@ -36,6 +39,8 @@ func LoadConfig(path string) Config {
 		log.Fatalln("load config.ini fail, err=", err)
 	}
 	log.Println("config load success")
+	ip := utils.GetLocalIp()
+	cfg.EtcdConf.TaillogKey = fmt.Sprintf(cfg.EtcdConf.TaillogKey, ip)
 	return &cfg
 }
 

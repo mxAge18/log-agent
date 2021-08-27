@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log-agent/config"
 	"log-agent/controller"
 	"log-agent/server_manager"
